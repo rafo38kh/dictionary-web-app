@@ -14,7 +14,6 @@ export default function Home() {
       <Navigation />
       <SearchInput />
       <WordDetails />
-      <main>Hello Motto</main>
     </div>
   );
 }
