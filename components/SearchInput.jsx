@@ -1,16 +1,35 @@
+import { useState } from "react";
 import Image from "next/image";
+
+import { useWordContext } from "@/contexts/WordContextProvider";
 
 import SearchIcon from "../public/icon-search.svg";
 
 export default function SearchInput() {
+  const { handleSubmit } = useWordContext();
+  const [input, setInput] = useState("");
+
+  const handleInput = (e) => {
+    setInput(e.target.value);
+  };
+
   return (
-    <form action="#" className="relative">
-      <input type="search" className="w-full" />
+    <form
+      action="#"
+      onSubmit={(e) => handleSubmit(e, input)}
+      className="relative my-4 "
+    >
+      <input
+        type="search"
+        value={input}
+        className="w-full py-2 px-1 rounded-2xl"
+        onChange={(e) => handleInput(e)}
+      />
       <Image
         src={SearchIcon}
-        width={10}
-        height={10}
-        className="absolute top-0 right-0"
+        width={20}
+        height={20}
+        className="absolute top-1/4 left-[90%]"
       />
     </form>
   );

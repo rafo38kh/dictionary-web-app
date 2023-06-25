@@ -2,6 +2,7 @@ import "./globals.css";
 
 import { FontContextProvider } from "@/contexts/FontContextProvider";
 import { ThemeContextProvider } from "@/contexts/ThemeContextProvider";
+import { WordContextProvider } from "@/contexts/WordContextProvider";
 
 export const metadata = {
   title: "Create Next App",
@@ -13,7 +14,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <ThemeContextProvider>
-          <FontContextProvider>{children}</FontContextProvider>
+          <FontContextProvider>
+            <WordContextProvider>{children}</WordContextProvider>
+          </FontContextProvider>
         </ThemeContextProvider>
       </body>
     </html>

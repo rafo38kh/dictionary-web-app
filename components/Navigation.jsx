@@ -8,7 +8,7 @@ import bookIcon from "../public/logo.svg";
 export default function Navigation() {
   return (
     <div className="flex justify-between">
-      <Image src={bookIcon} width={35} height={35} alt="book" />
+      <Image src={bookIcon} width={30} height={30} alt="book" />
       <div className="flex items-center  gap-4">
         <Fonts />
         <span className="w-[1px] h-[70%] bg-lightThree" />

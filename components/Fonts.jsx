@@ -14,7 +14,7 @@ export default function Fonts() {
     <div className="relative">
       <button
         type="button"
-        className="flex items-center gap-3"
+        className="flex items-center gap-3 text-sm"
         onClick={() => setIsMenuOpen((isMenuOpen) => !isMenuOpen)}
       >
         {currentFont}{" "}
@@ -22,7 +22,7 @@ export default function Fonts() {
       </button>
 
       {isMenuOpen && (
-        <ul className="absolute z-10 p-4 w-28 -left-10 shadow-lg rounded-lg">
+        <ul className="absolute z-10 p-4 w-28 -left-10 shadow-lg rounded-lg text-sm">
           {fonts.map((el) => (
             <li
               key={el}
