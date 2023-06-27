@@ -22,7 +22,7 @@ export default function Fonts() {
       </button>
 
       {isMenuOpen && (
-        <ul className="absolute z-10 p-4 w-28 -left-10 shadow-lg rounded-lg text-sm">
+        <ul className="absolute bg-light dark:bg-darkTwo z-50 p-4 w-28 -left-10 top-8 dark:shadow-dark-shadow shadow-light-shadow shadow rounded-lg text-sm">
           {fonts.map((el) => (
             <li
               key={el}

@@ -22,7 +22,7 @@ export default function SearchInput() {
       <input
         type="search"
         value={input}
-        className="w-full py-2 px-1 rounded-2xl"
+        className="w-full py-2 px-4 rounded-2xl bg-lightTwo dark:bg-darkTwo "
         onChange={(e) => handleInput(e)}
       />
       <Image

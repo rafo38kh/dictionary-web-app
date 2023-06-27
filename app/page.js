@@ -9,7 +9,7 @@ export default function Home() {
   const { currentFontClassName } = useFontContext();
   return (
     <div
-      className={`${currentFontClassName} w-[90%] max-w-3xl pt-6 px-2 mx-auto `}
+      className={`${currentFontClassName} text-darkThree dark:text-light w-[90%] max-w-3xl pt-6 px-2 mx-auto `}
     >
       <Navigation />
       <SearchInput />

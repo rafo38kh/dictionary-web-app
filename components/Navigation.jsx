@@ -7,7 +7,7 @@ import bookIcon from "../public/logo.svg";
 
 export default function Navigation() {
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between mb-6">
       <Image src={bookIcon} width={30} height={30} alt="book" />
       <div className="flex items-center  gap-4">
         <Fonts />

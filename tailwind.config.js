@@ -7,6 +7,10 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    boxShadow: {
+      "light-shadow": "rgba(50, 50, 93, 0.25) 0px 4px 12px",
+      "dark-shadow": "#A445ED 0px 4px 12px",
+    },
     colors: {
       dark: "#050505",
       darkTwo: "#1F1F1F",
