@@ -5,7 +5,7 @@ import audioBtn from "../public/icon-play.svg";
 
 export default function AudioBtn() {
   const { data } = useWordContext();
-  const audio = data.phonetics.filter((el) => el.audio)?.at(0).audio;
+  const audio = data?.phonetics.filter((el) => el.audio)?.at(0)?.audio;
 
   const [play] = useSound(audio);
 

@@ -3,25 +3,25 @@ import { whatPartOfSpeech } from "../utils/index";
 import { useWordContext } from "@/contexts/WordContextProvider";
 import AudioBtn from "./AudioBtn";
 import List from "./List";
+import WordError from "./WordError";
 
 export default function WordDetails() {
-  const { data, loading, error } = useWordContext();
+  const { data, isLoading, isError } = useWordContext();
   const [isReadMore, setIsReadMore] = useState(3);
+
+  console.log(isError);
 
   const noun = whatPartOfSpeech(data, "noun");
   const verb = whatPartOfSpeech(data, "verb");
   const synonyms = data?.meanings?.map((word) => word?.synonyms)?.flat();
-  console.log(isReadMore);
 
   const handleReadMoreClick = () =>
     isReadMore === synonyms?.length
       ? setIsReadMore(3)
       : setIsReadMore(synonyms?.length);
 
-  if (loading) return <div>Loading</div>;
-  if (error) return <div>Error</div>;
-
-  console.log(data);
+  if (isLoading) return <div>Loading</div>;
+  if (isError) return <WordError />;
 
   return (
     <div>
@@ -42,8 +42,8 @@ export default function WordDetails() {
         <List>
           {noun?.definitions?.map((def) => (
             <li
-              className="pl-6 ml-4 list-disc marker:text-purple mb-3"
               key={def.definition}
+              className="pl-6 ml-4 list-disc marker:text-purple mb-3"
             >
               {def.definition}
             </li>
@@ -55,11 +55,11 @@ export default function WordDetails() {
           <ul className="text-purple w-full">
             {
               <li className="flex flex-wrap gap-x-2">
-                {synonyms.slice(0, isReadMore).map((el, i) => (
-                  <li>
+                {synonyms?.slice(0, isReadMore).map((el, i) => (
+                  <span key={el}>
                     {el}
                     {i === synonyms.length - 1 ? "." : ","}
-                  </li>
+                  </span>
                 ))}
                 <button
                   type="button"
@@ -80,8 +80,8 @@ export default function WordDetails() {
           <List>
             {verb?.definitions?.map((def) => (
               <li
-                className="pl-6 ml-4 list-disc marker:text-purple mb-3"
                 key={def.definition}
+                className="pl-6 ml-4 list-disc marker:text-purple mb-3"
               >
                 {def.definition}
               </li>
