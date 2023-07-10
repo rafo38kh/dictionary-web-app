@@ -23,19 +23,19 @@ export default function SearchInput() {
       <form
         action="#"
         onSubmit={(e) => handleSubmit(e, input)}
-        className="relative my-4 "
+        className="relative my-4 flex justify-end items-center "
       >
         <input
           type="search"
           value={input}
-          className="w-full py-2 px-4 rounded-2xl bg-lightTwo dark:bg-darkTwo "
+          className="w-full md:py-5 md:px-6 py-3 px-4 rounded-2xl bg-lightTwo dark:bg-darkTwo font-bold text-sm lg:text-xl"
           onChange={(e) => handleInput(e)}
         />
         <Image
           src={SearchIcon}
           width={20}
           height={20}
-          className="absolute top-1/4 left-[90%]"
+          className="absolute mr-6"
         />
       </form>
       {isEmpty && <span>Whoops, can’t be empty…</span>}

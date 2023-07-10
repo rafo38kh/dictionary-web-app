@@ -23,6 +23,7 @@ module.exports = {
       lightFour: "#757575",
       purple: "#A445ED",
       red: "#FF5252",
+      textHover: "#bd78f1",
     },
 
     extend: {

@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useState, useMemo, useContext, useEffect } from "react";
+import { createContext, useState, useMemo, useContext } from "react";
 import useSWR from "swr";
 import axios from "axios";
 
@@ -8,14 +8,24 @@ const WordContext = createContext({
   setWord: () => null,
 });
 
-const fetcher = (url) =>
-  axios.get(url).then((res) => {
-    return res.data[0];
-  });
+const fetcher = async (url) => {
+  const res = await axios.get(url);
+
+  if (res.status === 404) {
+    const error = new Error("An error occurred while fetching the data.");
+
+    error.info = await res.json();
+    error.status = res.status;
+    throw error;
+  }
+
+  return res.data[0];
+};
+
+export default fetcher;
 
 export function WordContextProvider({ children }) {
   const [word, setWord] = useState("hello");
-  const [isError, setIsError] = useState(false);
 
   const handleSubmit = (e, word) => {
     e.preventDefault();
@@ -23,49 +33,17 @@ export function WordContextProvider({ children }) {
     !word || word === "" ? setWord("hello") : setWord(word);
   };
 
-  const { data, isLoading } = useSWR(
+  const {
+    data,
+    isLoading,
+    error: isError,
+  } = useSWR(
     () => "https://api.dictionaryapi.dev/api/v2/entries/en/" + word,
     fetcher
   );
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setIsError(true);
-  //   }, 5000);
-
-  //   return () => {
-  //     clearTimeout(timer);
-  //     setIsError(false);
-  //   };
-  // }, []);
-
-  useEffect(() => {
-    let timer;
-
-    const handleLoadingTimeout = () => {
-      setIsError(true);
-    };
-
-    const handleStartLoadingTimer = () => {
-      timer = setTimeout(handleLoadingTimeout, 5000);
-    };
-
-    const handleClearLoadingTimer = () => {
-      clearTimeout(timer);
-      setIsError(false);
-    };
-
-    if (isLoading) {
-      handleStartLoadingTimer();
-    } else {
-      handleClearLoadingTimer();
-    }
-
-    return handleClearLoadingTimer;
-  }, [word, isLoading]);
-
   const value = useMemo(
-    () => ({ handleSubmit, data, isError, isLoading }),
+    () => ({ handleSubmit, data, isError, isLoading, setWord }),
     [data, isError]
   );
 
