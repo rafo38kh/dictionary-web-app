@@ -55,6 +55,7 @@ export default function WordDetails() {
               <li className="flex flex-wrap gap-x-2 text-base md:text-xl">
                 {synonyms?.slice(0, isReadMore).map((el, i) => (
                   <button
+                    key={i}
                     className="hover:text-textHover"
                     onClick={() => setWord(el)}
                   >

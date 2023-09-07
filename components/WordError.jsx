@@ -8,9 +8,9 @@ export default function WordError() {
         No Definitions Found
       </span>
       <p className="text-lightFour text-center">
-        Sorry pal, we couldn't find definitions for the word you were looking
-        for. You can try the search again at later time or head to the web
-        instead.
+        Sorry pal, we couldn&apos;t find definitions for the word you were
+        looking for. You can try the search again at later time or head to the
+        web instead.
       </p>
     </div>
   );
