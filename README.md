@@ -22,8 +22,8 @@
 
 ### Links
 
-- Solution URL: []()
-- Live Site URL: []()
+- Solution URL: [https://www.frontendmentor.io/challenges/dictionary-web-app-h5wwnyuKFL](https://www.frontendmentor.io/challenges/dictionary-web-app-h5wwnyuKFL)
+- Live Site URL: [https://dictionary-web-app-ym3f.vercel.app/](https://dictionary-web-app-ym3f.vercel.app/)
 
 ## My process
 
